@@ -1,0 +1,27 @@
+<section class="background-radial-gradient overflow-hidden" id="act">
+<div class="container center">
+  <h1 class="center text-color3">カテゴリー一覧</h1>
+  <div class="top"><%= link_to '新規作成', new_category_path,class:"btn btn-outline-warning" %></div>
+  <table  class="container center">
+      <tr>
+        <td class="category-name px-1x text-color">カテゴリー名</td>
+      </tr>
+    <thead>
+    <td><%= render 'shared/flash_message' %></td>
+    <tr class="search">
+      <%= render 'categories/search_form' %>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <% @categories.each do |category|  %>
+          <td class="text-color2"><%= category.name %></td>
+          <td><%= link_to '詳細', category_path(category), class:"btn btn-outline-info" %></td>
+          <% end %>
+        </tr>
+    </tbody>
+  </table>
+  <%= paginate @categories %>
+  <%= link_to '戻る', tasks_path, class:"btn btn-outline-info" %>
+</div>
+</section>

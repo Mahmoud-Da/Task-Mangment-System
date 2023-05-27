@@ -1,0 +1,4 @@
+<h2>タイトル"<%= @search_result %>"の検索結果(<%= @categories.count %>件)</h2>
+<% @categories.each do |category| %>
+    <%= category.name %>
+<% end %>

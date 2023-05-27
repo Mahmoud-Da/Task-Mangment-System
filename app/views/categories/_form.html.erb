@@ -1,0 +1,12 @@
+<section class="background-radial-gradient overflow-hidden" id="act">
+<div class="container center">
+<%= form_with model: @category do |f| %>
+  <div><%= f.label :name, 'カテゴリー名', class:"category-name text-color" %></div>
+  <div class="container center" style="width: 30%;"><%= f.text_field :name, class:'form-control text-color3' %></div>
+  <div class="align-horizontal">
+  <td><%= link_to '戻る', categories_path,class:"btn btn-outline-info button_space" %></td>
+  <td><%= f.submit '更新',class:"btn btn-outline-success button_space" %></td>
+  </div>
+<% end %>
+</div>
+</section>

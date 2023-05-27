@@ -1,0 +1,12 @@
+<section class="background-radial-gradient overflow-hidden" id="act">
+<div class="center container category-name">
+<h1 class="container center text-color3">カテゴリ詳細</h1>
+    <td><%= @category.name %></td>
+    <div class="align-horizontal">
+    <td><%= link_to '戻る', categories_path, class: "px-1x btn btn-outline-info button_space" %></td>
+    <td><%= link_to '編集', edit_category_path(@category), class: "px-1x btn btn-outline-success button_space" %></td>
+    <td><%= button_to "削除", category_path(@category),
+                  method: :delete, class: "px-1x btn btn-outline-danger" %></td>
+    </div>
+</div>
+</section>

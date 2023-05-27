@@ -1,0 +1,12 @@
+<div class="center">
+  <h1>タスク一覧</h1>
+  <p>タイトル</p>
+  <td><%= @task.title %></td>
+  <p>内容</p>
+  <td><%= @task.body %></td>
+  <div class="align-horizontal">
+    <td>
+      <%= link_to '戻る', tasks_path, class: "px-1x btn btn-outline-info button_space" %>
+    </td>
+  </div>
+</div>

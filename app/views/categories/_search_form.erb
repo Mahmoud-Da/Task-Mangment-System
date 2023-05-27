@@ -1,0 +1,6 @@
+<div class="align-horizontal search-box">
+<%= form_with url: search_categories_path, method: :get, local: true do |form| %>
+  <%= form.text_field :search, class: "form-control me-2", id: "search_area", placeholder: "カテゴリー名を入力" %>
+  <%= form.submit '検索', name: nil, class: "btn btn-outline-danger px-1x" %>
+<% end %>
+</div>

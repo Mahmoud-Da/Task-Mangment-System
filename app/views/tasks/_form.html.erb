@@ -1,0 +1,6 @@
+<%= javascript_pack_tag 'form.js' %>
+<router-view :key="$route.fullPath"></router-view>
+<%# <div id='form'class="center"> %>
+<div id='form'></div>
+<div> <td><%= link_to '戻る', tasks_path, class: "px-1x btn btn-outline-info button_space" %></td></div>
+

@@ -1,0 +1,74 @@
+<%# Vue導入 %>
+<%= javascript_pack_tag 'hello_vue.js' %>
+<%= javascript_pack_tag 'form.js' %>
+<div id='vue-app'></div>
+<div id='form'></div>
+<%# Vue導入 %>
+<header role="header" id="header">
+<section class="background-radial-gradient overflow-hidden" id="act">
+<div class="container">
+<tr>
+<td><%= link_to 'カテゴリー一覧', categories_path, class: "btn btn-outline-warning button_space"%></td>
+<td><%= link_to 'タスク追加', new_task_path, class: "btn btn-outline-warning button_space"%></td>
+<td><%= button_to "ログアウト", logout_path, method: :delete , class: "search-box btn btn-outline-danger"%></td>
+<th>
+<h1 class="center text-color3">タスク一覧</h1>
+</th>
+</tr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="px-1x text-color">タスク名</th>
+      <th class="px-1x text-color">進行状態</th>
+      <th class="px-1x text-color">期限</th>
+      <th class="px-1x text-color">プロジェクト先</th>
+      <th class="px-3x text-color">優先度</th>
+      <th class="px-1x text-color"></th>
+      <th class="px-1x text-color"></th>
+    </tr>
+  </thead>
+  <tbody class="margin-top-middle">
+    <%= render 'shared/flash_message' %>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td class="px-1x text-color2"><%= task.title %></td>
+        <td class="px-x text-color2"><%= task.status_i18n %></td>
+        <td class="px-x text-color2"><%= task.limit.strftime('%Y年%m月%d日（%a）') %></td>
+        <td class="px-1x text-color2">
+         <% task.categories.each do |category|  %>
+         <%= category.name %>
+        <% end %></td>
+        <td class="px-x text-color2"><%= task.priority_i18n %></td>
+        <td class="px-x text-color2"><%= link_to '詳細', task_path(task), class: "btn btn-outline-info"%></td>
+                <td><%= link_to '編集', edit_task_path(task), class: "px-1x btn btn-outline-success button_space_index" %></td>
+        <td><%= button_to "削除", task_path(task),
+                method: :delete, class: "px-1x btn btn-outline-danger",
+                data: { turbo_confirm: "本当に削除しますか？" } %></td>
+      </tr>
+    <% end %>
+    <!--検索フォーム-->
+    <div class="search-box">
+    <%= search_form_for @q do |f| %>
+      <!--name_contは、あいまい検索を指定-->
+      <div class="align-horizontal">
+      <%= f.text_field :title_cont, placeholder: 'タイトルを入力',class: "form-control me-2" %>
+      <%= f.submit "検索", class: "btn btn-outline-danger px-1x"%>
+      </div>
+    <% end %>
+    <!--検索結果-->
+    <% if @tasks.present? %>
+      <!--検索がヒットした場合-->
+      <p class="px-3x text-color2">見つかりました！</p>
+    <% else %>
+      <!--検索がヒットしなかった場合-->
+      <p class="px-3x text-color2">検索結果はありません</p>
+    <% end %>
+    </div>
+  </tbody>
+</table>
+<%= paginate @tasks %>
+</div>
+<div>
+</div>
+</header>
+</section>
