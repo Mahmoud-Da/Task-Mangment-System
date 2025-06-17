@@ -11,7 +11,7 @@
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3"
+    "webpack-dev-server": "^5"
   },
   "license": "UNLICENSED"
 }
